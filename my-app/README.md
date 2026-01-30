@@ -38,7 +38,7 @@ mvn package
 Si prefieres ejecutar sin empaquetar dependencias, puedes usar el plugin `exec` de Maven:
 
 ```bash
-mvn -q -Dexec.mainClass="com.mycompany.app.Main" -Dexec.classpathScope=runtime org.codehaus.mojo:exec-maven-plugin:3.1.0:exec
+mvn org.codehaus.mojo:exec-maven-plugin:3.1.0:java -Dexec.mainClass="com.mycompany.app.Main" -Dexec.classpathScope=runtime
 ```
 
 O ejecutar la clase principal directamente (asegúrate de incluir `target/classes` y las dependencias necesarias en el classpath):
@@ -47,22 +47,3 @@ O ejecutar la clase principal directamente (asegúrate de incluir `target/classe
 # ejemplo genérico, ajustar según entorno
 java -cp target/classes com.mycompany.app.Main
 ```
-
-## Uso
-
-1. Ejecuta la aplicación.
-2. El menú mostrará las 9 monedas; ingresa el número de la moneda origen.
-3. Ingresa el número de la moneda destino.
-4. Ingresa el monto a convertir.
-5. La aplicación consultará `ExchangeRateApiClient.getCurrencyRate(from, to)` y mostrará el resultado.
-
-Si la API no responde, se mostrará un mensaje de error; verifica tu conexión a Internet o la configuración del servicio de tipos de cambio en `ExchangeRateApiClient`.
-
-## Notas
-
-- El proyecto está pensado como ejemplo educativo y depende de un servicio externo para obtener los tipos de cambio.
-- Si necesitas añadir más monedas, modifica `Main.java` (arreglos `codes` y `names`) y recompila.
-
----
-
-Si quieres, puedo añadir instrucciones para ejecutar con Docker o crear un script de ejecución. ¿Quieres que lo añada?
