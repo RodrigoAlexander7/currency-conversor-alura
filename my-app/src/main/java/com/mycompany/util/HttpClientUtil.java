@@ -11,16 +11,26 @@ import com.mycompany.config.*;
 
 
 public class HttpClientUtil{
-    public HttpResponse<String> fetchData(String args) throws IOException, InterruptedException {
+    public static HttpResponse<String> fetchData(String args) throws IOException, InterruptedException {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-            .uri(URI.create(ApiConfig.BASE_URL+args))
+            .uri(URI.create(ApiConfig.BASE_URL+"latest/"+args))
             .build();
 
         HttpResponse<String> response = client
             .send(request, BodyHandlers.ofString());
 
         return response;
-            
+    }
+    public static HttpResponse<String> fetchPairData(String currency01, String currency02) throws IOException, InterruptedException {
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+            .uri(URI.create(ApiConfig.BASE_URL+"pair/" + currency01 + "/" + currency02))
+            .build();
+
+        HttpResponse<String> response = client
+            .send(request, BodyHandlers.ofString());
+
+        return response;
     }
 }

@@ -9,7 +9,7 @@ public class Main {
         
         HttpClientUtil client = new HttpClientUtil();
         try {
-            HttpResponse res = client.fetchData("latest/USD");
+            HttpResponse res = client.fetchPairData("USD", "PEN");
             System.out.println(res.body());
         } catch (Exception e) {
             System.err.println(e);
